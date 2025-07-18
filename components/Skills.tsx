@@ -24,7 +24,7 @@ export default function Skills() {
             >
               <div className="flex items-center mb-6">
                 <div className={`p-2 rounded-lg bg-gradient-to-r ${skill.gradient} bg-opacity-10 mr-3`}>
-                  <skill.icon className={`w-5 h-5 bg-gradient-to-r ${skill.gradient} bg-clip-text text-transparent`} />
+                  <skill.icon className={`w-5 h-5 bg-gradient-to-r ${skill.gradient} bg-clip-text text-white`} />
                 </div>
                 <h4 className={`text-lg font-semibold bg-gradient-to-r ${skill.gradient} bg-clip-text text-transparent`}>
                   {skill.category}
