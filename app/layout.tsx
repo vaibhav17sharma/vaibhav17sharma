@@ -1,19 +1,20 @@
-import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+import './globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://vaibdev.com'),
   title: 'Vaibhav Sharma - Full Stack Engineer',
   description: 'Full Stack Engineer specializing in MERN Stack, Angular, and AI/ML. Currently pursuing M.Tech in AI & ML from BITS Pilani.',
-  keywords: 'Full Stack Developer, MERN Stack, Angular, Next.js, AI/ML, JavaScript, TypeScript',
+  keywords: 'Vaibhav Sharma, Full Stack Developer, MERN Stack, Angular, Next.js, AI/ML, JavaScript, TypeScript',
   authors: [{ name: 'Vaibhav Sharma' }],
   creator: 'Vaibhav Sharma',
   openGraph: {
     title: 'Vaibhav Sharma - Full Stack Engineer',
     description: 'Full Stack Engineer specializing in MERN Stack, Angular, and AI/ML',
-    url: 'https://vaibhavsharma.dev',
+    url: 'https://vaibdev.com',
     siteName: 'Vaibhav Sharma Portfolio',
     type: 'website',
   },

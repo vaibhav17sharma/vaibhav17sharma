@@ -3,7 +3,7 @@ import { FileText, Github, Linkedin, Mail } from 'lucide-react';
 export default function Footer() {
   return (
     <footer className="border-t border-white/10 py-12">
-      <div className="fade-in">
+      <div className="">
         <div className="flex flex-col sm:flex-row items-center justify-between">
           <div className="flex items-center space-x-6 mb-6 md:mb-0">
             <a href="https://github.com/vaibhav17sharma" target="_blank" rel="noopener noreferrer" className="social-link">
