@@ -22,6 +22,3 @@
 <a href="https://linkedin.com/in/vaibhav-sharma-it" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="vaibhav-sharma-it" height="30" width="40" /></a>
 </p>
 
-<p><img align="left" src="https://github-readme-stats.vercel.app/api/top-langs?username=vaibhav17sharma&show_icons=true&locale=en&layout=compact" alt="vaibhav17sharma" /></p>
-
-<p>&nbsp;<img align="center" src="https://awesome-github-stats.azurewebsites.net/user-stats/vaibhav17sharma?cardType=level&preferLogin=false" alt="vaibhav17sharma" /></p>
