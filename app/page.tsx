@@ -1,27 +1,27 @@
 'use client';
 
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import Education from '../components/Education';
 import Experience from '../components/Experience';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import Projects from '../components/Projects';
 import Skills from '../components/Skills';
+import { useAppStore } from '../lib/store';
 import img from '../public/assets/hiii.gif';
 import Loading from './loading';
 
 export default function Portfolio() {
-  const [isLoading, setIsLoading] = useState(true);
+  const { isLoading, setIsLoading } = useAppStore();
 
   useEffect(() => {
-    // Hide loader after 2 seconds
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 1000);
+    }, 200);
 
     return () => clearTimeout(timer);
-  }, []);
+  }, [setIsLoading]);
 
   useEffect(() => {
     // Intersection Observer for fade-in animations

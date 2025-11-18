@@ -1,8 +1,8 @@
-import { FileText, Github, Linkedin, Mail, Menu, X } from 'lucide-react';
-import { useState } from 'react';
+import { FileText, Github, Home, Linkedin, Mail, Menu, X } from 'lucide-react';
+import { useAppStore } from '../lib/store';
 
 export default function Header() {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { isMobileMenuOpen, setIsMobileMenuOpen } = useAppStore();
 
   return (
     <header className="fixed top-0 w-full bg-black/80 backdrop-blur-md border-b border-white/5 z-50">
@@ -17,6 +17,14 @@ export default function Header() {
             </p>
           </div>
           <nav className="hidden md:flex items-center space-x-6">
+            <a 
+              href="/" 
+              className="flex items-center space-x-2 text-gray-300 hover:text-blue-400 transition-colors duration-300 group relative"
+            >
+              <Home className="w-4 h-4" />
+              <span className="text-sm">Home</span>
+              <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-400 to-purple-400 group-hover:w-full transition-all duration-300"></div>
+            </a>
             <a 
               href="mailto:vaibhav17sharma.it@gmail.com" 
               className="flex items-center space-x-2 text-gray-300 hover:text-blue-400 transition-colors duration-300 group"
@@ -46,11 +54,11 @@ export default function Header() {
               <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-400 to-purple-400 group-hover:w-full transition-all duration-300"></div>
             </a>
             <a 
-              href="#projects" 
+              href="/projects" 
               className="flex items-center space-x-2 text-gray-300 hover:text-blue-400 transition-colors duration-300 group relative"
             >
               <FileText className="w-4 h-4" />
-              <span className="text-sm">Resume</span>
+              <span className="text-sm">Projects</span>
               <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-400 to-purple-400 group-hover:w-full transition-all duration-300"></div>
             </a>
           </nav>
@@ -68,6 +76,14 @@ export default function Header() {
           isMobileMenuOpen ? 'max-h-64 opacity-100' : 'max-h-0 opacity-0'
         } overflow-hidden`}>
           <div className="px-2 pt-2 pb-3 space-y-1 bg-black/50 backdrop-blur-sm rounded-lg mt-2 border border-white/5">
+            <a 
+              href="/" 
+              className="flex items-center space-x-3 px-3 py-2 text-gray-300 hover:text-blue-400 hover:bg-white/5 rounded-md transition-all duration-300"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              <Home className="w-4 h-4" />
+              <span>Home</span>
+            </a>
             <a 
               href="mailto:vaibhav17sharma.it@gmail.com" 
               className="flex items-center space-x-3 px-3 py-2 text-gray-300 hover:text-blue-400 hover:bg-white/5 rounded-md transition-all duration-300"
@@ -97,12 +113,12 @@ export default function Header() {
               <span>LinkedIn</span>
             </a>
             <a 
-              href="#projects" 
+              href="/projects" 
               className="flex items-center space-x-3 px-3 py-2 text-gray-300 hover:text-blue-400 hover:bg-white/5 rounded-md transition-all duration-300"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               <FileText className="w-4 h-4" />
-              <span>Resume</span>
+              <span>Projects</span>
             </a>
           </div>
         </div>
