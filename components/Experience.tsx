@@ -1,8 +1,14 @@
 const experience = [
   {
+    title: 'Team Lead - AI & MERN',
+    company: 'Eminence Technology',
+    period: 'Jan 2026 – Present',
+    description: 'Leading the AI & MERN stack team.',
+  },
+  {
     title: 'Senior Software Engineer',
     company: 'Novoinvent Softwares',
-    period: '2023 – Present',
+    period: '2023 – 2026',
     description: 'Led cross-functional team for Fintech modules; delivered 5+ features in a year. Built apps scoring 95+ on Lighthouse.',
   },
   {

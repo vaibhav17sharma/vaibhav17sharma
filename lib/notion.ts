@@ -47,7 +47,7 @@ export async function getAllProjects(): Promise<NotionProject[]> {
         upstream_url: properties.upstream_url?.url || '',
         cover_image: properties.cover_image?.files?.[0]?.file?.url || properties.cover_image?.files?.[0]?.external?.url,
         tags: properties.tags?.multi_select?.map((tag: any) => tag.name) || [],
-        created_at: properties.created_at?.created_time,
+        created_at: properties.created_at?.date?.start || '',
       };
     });
   } catch (error) {
@@ -56,29 +56,7 @@ export async function getAllProjects(): Promise<NotionProject[]> {
   }
 }
 
-async function fetchSeoData(ids: string[]): Promise<any> {
-  const results: any[] = [];
 
-  for( const id of ids) {
-    const page = await notion.pages.retrieve({ page_id: id });
-    const props = (page as any).properties;
-
-    const title = props["Title"]?.title?.[0]?.plain_text || "";
-    const body = props["Body"]?.rich_text?.[0]?.plain_text || "";
-    const keywords = props["Keywords"]?.rich_text?.[0]?.plain_text || "";
-    const description = props["Meta Description"]?.rich_text?.[0]?.plain_text || "";
-
-
-    results.push({
-      title,
-      body,
-      description,
-      keywords: keywords.split(',').map((keyword: string) => keyword.trim())
-    });
-  }
-  
-  return results;
-}
 
 async function fetchImages(ids: string[]): Promise<ImageData[]> {
   const result: ImageData[] = [];
@@ -137,10 +115,27 @@ export async function getProjectBySlug(slug: string): Promise<NotionProject | nu
     const imageIds =
       properties["Image Gallery"]?.relation?.map((rel: any) => rel.id) || [];
 
-    const seoData = properties["SEO Content"]?.relation?.map((rel: any) => rel.id) || [];
-
     const images = await fetchImages(imageIds);
-    const seoContent = await fetchSeoData(seoData);
+
+    const seoTitle = properties["SEO Title"]?.rich_text?.[0]?.plain_text || "";
+    const seoBody = properties["SEO Body"]?.rich_text?.[0]?.plain_text || "";
+    const seoKeywords = properties["SEO Keywords"]?.rich_text?.[0]?.plain_text || "";
+    const seoDescription = properties["SEO Meta Description"]?.rich_text?.[0]?.plain_text || "";
+    
+    let seoContent: Array<{
+      title: string;
+      body: string;
+      description: string;
+      keywords: string[];
+    }> = [];
+    if (seoTitle || seoBody || seoKeywords || seoDescription) {
+      seoContent.push({
+        title: seoTitle,
+        body: seoBody,
+        description: seoDescription,
+        keywords: seoKeywords.split(',').map((keyword: string) => keyword.trim()).filter(Boolean)
+      });
+    }
 
     return {
       id: page.id,

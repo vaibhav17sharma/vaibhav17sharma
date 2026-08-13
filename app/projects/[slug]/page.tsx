@@ -6,7 +6,7 @@ import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 
 interface ProjectPageProps {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }
 
 function getYouTubeEmbedUrl(url: string) {
@@ -15,7 +15,8 @@ function getYouTubeEmbedUrl(url: string) {
 }
 
 export async function generateMetadata({ params }: ProjectPageProps): Promise<Metadata> {
-  const project = await getProject(params.slug);
+  const { slug } = await params;
+  const project = await getProject(slug);
   
   if (!project) {
     return {
@@ -34,7 +35,8 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
 }
 
 export default async function ProjectPage({ params }: ProjectPageProps) {
-  const project = await getProject(params.slug);
+  const { slug } = await params;
+  const project = await getProject(slug);
   
   if (!project) {
     notFound();
