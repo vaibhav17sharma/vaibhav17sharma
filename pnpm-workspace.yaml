@@ -1,0 +1,4 @@
+allowBuilds:
+  unrs-resolver: true
+minimumReleaseAgeExclude:
+  - '@notionhq/client@5.25.0'

@@ -1,12 +1,14 @@
 import { NextRequest } from 'next/server';
 import { getProject } from '@/lib/projects';
 
-export async function GET(request: NextRequest, context: { params: { slug: string; path?: string[] } }) {
-  return handleRequest(request, context.params);
+export async function GET(request: NextRequest, context: { params: Promise<{ slug: string; path?: string[] }> }) {
+  const params = await context.params;
+  return handleRequest(request, params);
 }
 
-export async function POST(request: NextRequest, context: { params: { slug: string; path?: string[] } }) {
-  return handleRequest(request, context.params);
+export async function POST(request: NextRequest, context: { params: Promise<{ slug: string; path?: string[] }> }) {
+  const params = await context.params;
+  return handleRequest(request, params);
 }
 
 async function handleRequest(request: NextRequest, params: { slug: string; path?: string[] }) {
