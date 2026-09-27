@@ -1,41 +1,89 @@
-import { Award, Code, Database, Layers, Wrench, Zap } from 'lucide-react';
+import { Award, Brain, Code, Database, Layers, Wrench } from 'lucide-react';
 
 const skills = [
-  { category: 'Languages', items: ['JavaScript', 'TypeScript'], icon: Code, gradient: 'from-blue-400 to-cyan-400' },
-  { category: 'Frameworks', items: ['Angular', 'Next.js', 'MERN Stack'], icon: Layers, gradient: 'from-purple-400 to-pink-400' },
-  { category: 'Tools', items: ['AWS', 'Git', 'Docker', 'VS Code'], icon: Wrench, gradient: 'from-green-400 to-emerald-400' },
-  { category: 'Libraries', items: ['Prisma', 'Tailwind CSS'], icon: Zap, gradient: 'from-yellow-400 to-orange-400' },
-  { category: 'Databases', items: ['MongoDB', 'PostgreSQL'], icon: Database, gradient: 'from-red-400 to-rose-400' },
-  { category: 'Bonus', items: ['SEO', 'Responsive Design'], icon: Award, gradient: 'from-indigo-400 to-purple-400' },
+  {
+    category: 'AI / ML',
+    items: ['Python', 'PyTorch', 'LLM APIs', 'RAG', 'Prompt Engineering'],
+    icon: Brain,
+    accent: '#00D4FF',
+    chipClass: 'chip',
+  },
+  {
+    category: 'Languages',
+    items: ['JavaScript', 'TypeScript', 'Python'],
+    icon: Code,
+    accent: '#60A5FA',
+    chipClass: 'chip',
+  },
+  {
+    category: 'Frameworks',
+    items: ['Angular', 'Next.js', 'React', 'Node.js', 'Express'],
+    icon: Layers,
+    accent: '#A78BFA',
+    chipClass: 'chip chip-violet',
+  },
+  {
+    category: 'Infrastructure',
+    items: ['AWS', 'Docker', 'Git', 'CI/CD'],
+    icon: Wrench,
+    accent: '#34D399',
+    chipClass: 'chip chip-emerald',
+  },
+  {
+    category: 'Databases',
+    items: ['MongoDB', 'PostgreSQL', 'Redis'],
+    icon: Database,
+    accent: '#F472B6',
+    chipClass: 'chip chip-violet',
+  },
+  {
+    category: 'Craft',
+    items: ['System Design', 'SEO', 'Lighthouse 95+', 'Code Review'],
+    icon: Award,
+    accent: '#FBBF24',
+    chipClass: 'chip',
+  },
 ];
 
 export default function Skills() {
   return (
     <section id="skills" className="mb-32">
       <div className="fade-in">
-        <h3 className="text-2xl sm:text-3xl font-bold mb-16 text-center bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+        {/* Section header */}
+        <div className="flex items-center gap-4 mb-12">
+          <span className="section-label">skills</span>
+          <div className="flex-1 h-px bg-gradient-to-r from-[#00D4FF]/20 to-transparent" />
+        </div>
+        <h3 className="text-2xl sm:text-3xl font-bold mb-12 text-gradient-main">
           Skills & Technologies
         </h3>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {skills.map((skill, index) => (
-            <div 
-              key={index} 
-              className="group relative p-6 rounded-xl bg-gradient-to-br from-white/[0.02] to-white/[0.01] border border-white/5 hover:border-white/10 transition-all duration-500 hover:transform hover:scale-[1.02]"
+            <div
+              key={index}
+              className="skill-card p-6 group"
             >
-              <div className="flex items-center mb-6">
-                <div className={`p-2 rounded-lg bg-gradient-to-r ${skill.gradient} bg-opacity-10 mr-3`}>
-                  <skill.icon className={`w-5 h-5 bg-gradient-to-r ${skill.gradient} bg-clip-text text-white`} />
+              {/* Header */}
+              <div className="flex items-center gap-3 mb-5">
+                <div
+                  className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0"
+                  style={{ background: `${skill.accent}15`, border: `1px solid ${skill.accent}25` }}
+                >
+                  <skill.icon
+                    className="w-4 h-4"
+                    style={{ color: skill.accent }}
+                  />
                 </div>
-                <h4 className={`text-lg font-semibold bg-gradient-to-r ${skill.gradient} bg-clip-text text-transparent`}>
+                <h4 className="text-sm font-semibold tracking-wide" style={{ color: skill.accent }}>
                   {skill.category}
                 </h4>
               </div>
+
+              {/* Chips */}
               <div className="flex flex-wrap gap-2">
-                {skill.items.map((item, itemIndex) => (
-                  <span
-                    key={itemIndex}
-                    className="text-sm bg-white/5 hover:bg-white/10 px-3 py-1.5 rounded-full border border-white/10 hover:border-white/20 transition-all duration-300 cursor-default"
-                  >
+                {skill.items.map((item, i) => (
+                  <span key={i} className={skill.chipClass}>
                     {item}
                   </span>
                 ))}
